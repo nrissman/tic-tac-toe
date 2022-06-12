@@ -7,13 +7,8 @@
 let playerTurn = true
 //keep track of turns to end game in tie 
 let turns = 0 
-const gameFlow = ['playerx', 'playero', 'playerx', 'playero', 'playerx', 'playero', 'playerx', 'playero', 'playerx']
-//define color for reset 
-const unClaimedColor = 'rgb(225, 0, 0)'
-//define player one blue 
-const player1color = 'rgb(0, 0, 225)'
-//define player two green
-const player2color = 'rgb(0, 225, 0)'
+ 
+
 
 
 let b1= document.getElementById('b1')
@@ -26,11 +21,12 @@ let b7= document.getElementById('b7')
 let b8= document.getElementById('b8')
 let b9= document.getElementById('b9')
 
-let playerToken= document.getElementById('playerToken')
 
-// let restartButton= document.getElementsByClassName(button)
+
 
 let truthArray = [true, true, true, true, true, true, true, true, true]
+
+
 
 b1.addEventListener('click', function (event){
     if (truthArray[0] === true){
@@ -42,8 +38,11 @@ b1.addEventListener('click', function (event){
             b1.innerText = ('O')
             playerTurn = true  
         } 
+        turns = turns +1
         truthArray[0] = false
-    } 
+    }   checkWin ()
+    
+      
 })
 
 b2.addEventListener('click', function (event){
@@ -56,8 +55,10 @@ b2.addEventListener('click', function (event){
             b2.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[1] = false
-    } 
+    }   checkWin ()
+    
 })
 
 b3.addEventListener('click', function (event){
@@ -70,8 +71,9 @@ b3.addEventListener('click', function (event){
             b3.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[2] = false
-    } 
+    }   checkWin ()
 })
 
 b4.addEventListener('click', function (event){
@@ -84,8 +86,9 @@ b4.addEventListener('click', function (event){
             b4.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[3] = false
-    } 
+    }   checkWin ()
 })
 
 b5.addEventListener('click', function (event){
@@ -98,8 +101,9 @@ b5.addEventListener('click', function (event){
             b5.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[4] = false
-    } 
+    }   checkWin ()
 })
 
 b6.addEventListener('click', function (event){
@@ -112,8 +116,9 @@ b6.addEventListener('click', function (event){
             b6.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[5] = false
-    } 
+    }   checkWin ()
 })
 
 b7.addEventListener('click', function (event){
@@ -126,8 +131,9 @@ b7.addEventListener('click', function (event){
             b7.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[6] = false
-    } 
+    }   checkWin ()
 })
 
 b8.addEventListener('click', function (event){
@@ -140,8 +146,9 @@ b8.addEventListener('click', function (event){
             b8.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[7] = false
-    } 
+    }   checkWin ()
 })
 
 b9.addEventListener('click', function (event){
@@ -154,24 +161,65 @@ b9.addEventListener('click', function (event){
             b9.innerText = ('O')
             playerTurn = true
         } 
+        turns = turns +1
         truthArray[8] = false
-    } 
+    }   checkWin ()
 })
 
-// function playerToken (){
-//     if (gameFlow[turns] === 'playerx') {
-//         emoji = '1️⃣'
-//         playerToken.innerText = 'player two turn'
-//     } else if (gameFlow[turns] === 'playero'){
-//         emoji: = '2️⃣'
-//         playerToken.innerText = ' player 1 turn'  
-//     }
 
-//     turn += 1
-//}
+function checkWin (){
+    if (b1.innerText != "" && b1.innerText === b2.innerText && b1.innerText === b3.innerText ||
+        b4.innerText != "" && b4.innerText === b5.innerText && b4.innerText === b6.innerText ||
+        b7.innerText != "" && b7.innerText === b8.innerText && b7.innerText === b9.innerText ||
+        b1.innerText != "" && b1.innerText === b4.innerText && b1.innerText === b7.innerText ||
+        b2.innerText != "" && b2.innerText === b5.innerText && b2.innerText === b8.innerText ||
+        b3.innerText != "" && b3.innerText === b6.innerText && b3.innerText === b9.innerText ||
+        b1.innerText != "" && b1.innerText === b5.innerText && b1.innerText === b9.innerText ||
+        b3.innerText != "" && b3.innerText === b5.innerText && b3.innerText === b7.innerText
+    ){
+        document.getElementById("winner").innerText = "Player ${} has won!"
+        console.log("Winner, Winner, Chicken Dinner!")
+
+    }
+        if (turns === 9) {
+            document.getElementById("winner").innerText = "It's a Tie. Click Restart Game to play again!"
+        } if (turns === 1) {
+            document.getElementById("playerturn").innerText = "Player 2 Turn"
+        } if (turns === 2) {
+            document.getElementById("playerturn").innerText = "Player 1 Turn"
+        } if (turns === 3) {
+            document.getElementById("playerturn").innerText = "Player 2 Turn"
+        } if (turns === 4) {
+            document.getElementById("playerturn").innerText = "Player 1 Turn"
+        } if (turns === 5) {
+            document.getElementById("playerturn").innerText = "Player 2 Turn"
+        } if (turns === 6) {
+            document.getElementById("playerturn").innerText = "Player 1 Turn"
+        } if (turns === 7) {
+            document.getElementById("playerturn").innerText = "Player 2 Turn"
+        } if (turns === 8) {
+            document.getElementById("playerturn").innerText = "Player 1 Turn"
+        } 
+}
+
+function endGame () {
+    if (b1.innerText != "" && b1.innerText === b2.innerText && b1.innerText === b3.innerText ||
+        b4.innerText != "" && b4.innerText === b5.innerText && b4.innerText === b6.innerText ||
+        b7.innerText != "" && b7.innerText === b8.innerText && b7.innerText === b9.innerText ||
+        b1.innerText != "" && b1.innerText === b4.innerText && b1.innerText === b7.innerText ||
+        b2.innerText != "" && b2.innerText === b5.innerText && b2.innerText === b8.innerText ||
+        b3.innerText != "" && b3.innerText === b6.innerText && b3.innerText === b9.innerText ||
+        b1.innerText != "" && b1.innerText === b5.innerText && b1.innerText === b9.innerText ||
+        b3.innerText != "" && b3.innerText === b5.innerText && b3.innerText === b7.innerText
+    ) {
+        document.getElementsByClassName("grid").removeEventListener
+    }
+}
 
 
 
-// restartButton.addEventListener('click', function (event)){
-//     if 
-// }
+restart.addEventListener('click', function (event){
+   location.reload()
+})
+
+
