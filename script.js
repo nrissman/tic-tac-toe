@@ -1,14 +1,9 @@
-
-
-
-
 // indicator to keep track of player turn
 //changes turn by switching value of token 
 let playerTurn = true
 //keep track of turns to end game in tie 
 let turns = 0 
-let playerDisplay = 'O'
- 
+let gameVictor = false
 
 
 let endGame= document.getElementById('winner')
@@ -22,15 +17,10 @@ let b7= document.getElementById('b7')
 let b8= document.getElementById('b8')
 let b9= document.getElementById('b9')
 
-
-
-
 let truthArray = [true, true, true, true, true, true, true, true, true]
 
-
-
 b1.addEventListener('click', function (event){
-    if (endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
         if (truthArray[0] === true){
             if (playerTurn === true){
                 console.log('helllo')
@@ -50,7 +40,7 @@ b1.addEventListener('click', function (event){
 })
 
 b2.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
         if (truthArray[1] === true){
             if (playerTurn === true){
                 console.log('helllo')
@@ -69,7 +59,7 @@ b2.addEventListener('click', function (event){
 })
 
 b3.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[2] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -86,7 +76,7 @@ b3.addEventListener('click', function (event){
 })
 
 b4.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[3] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -103,7 +93,7 @@ b4.addEventListener('click', function (event){
 })
 
 b5.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[4] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -120,7 +110,7 @@ b5.addEventListener('click', function (event){
 })
 
 b6.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[5] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -137,7 +127,7 @@ b6.addEventListener('click', function (event){
 })
 
 b7.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[6] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -154,7 +144,7 @@ b7.addEventListener('click', function (event){
 })
 
 b8.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[7] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -171,7 +161,7 @@ b8.addEventListener('click', function (event){
 })
 
 b9.addEventListener('click', function (event){
-    if(endGame.innerText!= 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'){
+    if (endGame.innerText!= 'Player O HAS WON!' && (gameVictor != true) || 'PLAYER X HAS WON!' && (gameVictor != true)){
     if (truthArray[8] === true){
         if (playerTurn === true){
             console.log('helllo')
@@ -198,37 +188,37 @@ function checkWin (){
         b1.innerText != "" && b1.innerText === b5.innerText && b1.innerText === b9.innerText ||
         b3.innerText != "" && b3.innerText === b5.innerText && b3.innerText === b7.innerText
     ){
+        if (playerTurn == true) {
+            endGame.innerText = 'Player O HAS WON!'
+            gameVictor = true
+        }   else{ 
+            endGame.innerText = 'Player X HAS WON!'
+                gameVictor = true
+        }
         //document.getElementById("winner").innerText = "Player ${} has won!"
-        endGame.innerText = 'WINNER WINNER CHICKEN DINNER PLAYER ' + playerDisplay + ' HAS WON!'
-        console.log("Winner, Winner, Chicken Dinner!")
+        //endGame.innerText = 'WINNER WINNER CHICKEN DINNER PLAYER `${} HAS WON!'
+        //console.log("Winner, Winner, Chicken Dinner!")
 
     }
         if (turns === 9) {
             document.getElementById("winner").innerText = "It's a Tie. Click Restart Game to play again!"
         } if (turns === 1) {
             document.getElementById("playerturn").innerText = "Player O Turn"
-            playerDisplay = 'O'
         } if (turns === 2) {
             document.getElementById("playerturn").innerText = "Player X Turn"
-            playerDisplay = 'X'
         } if (turns === 3) {
             document.getElementById("playerturn").innerText = "Player O Turn"
-            playerDisplay = 'O'
         } if (turns === 4) {
             document.getElementById("playerturn").innerText = "Player X Turn"
-            playerDisplay = 'X'
         } if (turns === 5) {
             document.getElementById("playerturn").innerText = "Player O Turn"
-            playerDisplay = 'O'
         } if (turns === 6) {
             document.getElementById("playerturn").innerText = "Player X Turn"
-            playerDisplay = 'X'
         } if (turns === 7) {
             document.getElementById("playerturn").innerText = "Player O Turn"
-            playerDisplay = 'O'
         } if (turns === 8) {
             document.getElementById("playerturn").innerText = "Player X Turn"
-        }   playerDisplay = 'X'
+        } 
 }
 
 
@@ -237,5 +227,3 @@ function checkWin (){
 restart.addEventListener('click', function (event){
    location.reload()
 })
-
-
