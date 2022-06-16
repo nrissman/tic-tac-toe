@@ -35,3 +35,7 @@ h1{
     height: 100px;
     border: 1px solid black;
 } 
+
+#restart:hover{
+    background-color: brown;
+}
